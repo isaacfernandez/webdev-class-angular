@@ -1,0 +1,27 @@
+<div class="container-fluid col-3 align-center  ">
+  <h1>Login</h1>
+
+  <input [(ngModel)]="username"
+         placeholder="username"
+         class="form-control"/>
+  <input [(ngModel)]="password"
+         placeholder="password"
+         type="password"
+         class="form-control"/>
+
+  {{errorMessage}}
+
+  <button (click)="login(username, password)"
+          class="btn btn-primary btn-block">
+    Login
+  </button>
+
+  <div class="row">
+    <div class="col-6 pull-left">
+      <a routerLink="/register">Register</a>
+    </div>
+    <div class="col-6 pull-right">
+      <a routerLink="/home">Home</a>
+    </div>
+  </div>
+</div>
