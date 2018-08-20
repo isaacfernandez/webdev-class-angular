@@ -1,0 +1,13 @@
+<div class="container-fluid">
+  <h1>CRN#{{courseId}}</h1>
+
+  <ul class="list-group">
+    <li *ngFor="let section of sections" class="list-group-item">
+      {{section.name}} {{section.seats}}
+      <button (click)="enroll(section)"
+              class="float-right btn btn-success">Enroll
+      </button>
+    </li>
+  </ul>
+  <a routerLink="/home">Home</a>
+</div>

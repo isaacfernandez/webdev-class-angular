@@ -1,3 +1,41 @@
-<p>
-  profile works!
-</p>
+<a (click)="logout()" class="float-right">Logout | </a>
+<a routerLink="/home">Home</a>
+<a [hidden]="!admin" routerLink="/admin/course"> | Admin page</a>
+<div class="container-fluid">
+  <h1>Profile</h1>
+  Empty input fields mean the server has no information available on you.
+  <input [(ngModel)]="username"
+         placeholder="username"
+         class="form-control"/>
+  <input [(ngModel)]="firstName"
+         placeholder="first name"
+         class="form-control"/>
+  <input [(ngModel)]="lastName"
+         placeholder="last name"
+         class="form-control"/>
+  <input [(ngModel)]="email"
+         placeholder="email"
+         class="form-control"/>
+  <input [(ngModel)]="phone"
+         placeholder="phone number"
+         class="form-control"/>
+  <button (click)="update()"
+          class="btn btn-primary btn-block">
+    Update
+  </button>
+
+  <h2>You are currently signed up for {{sections.length || 0}} sections.</h2>
+
+  <ul class="list-group">
+    <li *ngFor="let enrollment of sections"
+        class="list-group-item">
+      <a routerLink="/course/{{enrollment.section.courseId}}/section">
+        {{enrollment.section.name}}
+        ({{enrollment.section.seats}})</a>
+      <button (click)="unenroll(enrollment)"
+              class="float-right btn btn-danger">Drop
+      </button>
+    </li>
+  </ul>
+
+</div>

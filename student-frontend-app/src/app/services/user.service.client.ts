@@ -1,10 +1,10 @@
 export class UserServiceClient {
 
-  USER_LOGIN_URL = 'https://wbdv-s2-1.herokuapp.com/api/login';
-  USER_LOGOUT_URL = 'https://wbdv-s2-1.herokuapp.com/api/logout';
-  USER_PROFILE_URL = 'https://wbdv-s2-1.herokuapp.com/api/profile';
-  USER_REGISTER_URL = 'https://wbdv-s2-1.herokuapp.com/api/register';
-  USER_URL = 'https://wbdv-s2-1.herokuapp.com/api/user/USER_ID';
+  USER_LOGIN_URL = 'https://wbdv-s2-4-node.herokuapp.com/api/login';
+  USER_LOGOUT_URL = 'https://wbdv-s2-4-node.herokuapp.com/api/logout';
+  USER_PROFILE_URL = 'https://wbdv-s2-4-node.herokuapp.com/api/profile';
+  USER_REGISTER_URL = 'https://wbdv-s2-4-node.herokuapp.com/api/register';
+  USER_URL = 'https://wbdv-s2-4-node.herokuapp.com/api/user/USER_ID';
 
   findUserById(userId) {
     return fetch(this.USER_URL.replace('USER_ID', userId))
@@ -18,8 +18,8 @@ export class UserServiceClient {
     });
   }
 
-  checkIfLoggedIn() {
-    return fetch(this.USER_LOGIN_URL + '/isloggedin', {
+  isloggedin() {
+    return fetch(this.USER_LOGIN_URL + '/active', {
       credentials: 'include'
     });
   }
@@ -58,8 +58,7 @@ export class UserServiceClient {
   }
 
   profile() {
-    return fetch(this.USER_PROFILE_URL,
-      {
+    return fetch(this.USER_PROFILE_URL,{
         credentials: 'include', // include, same-origin, *omit
       })
       .then(response => response.json());

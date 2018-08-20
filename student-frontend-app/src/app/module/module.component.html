@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-3">
+    <ul class="list-group">
+      <li class="bg-primary list-group-item">Modules</li>
+      <li [ngClass]="{'active': module.id == moduleId}" *ngFor="let module of modules" class="list-group-item">
+        <a routerLink="/course/{{courseId}}/module/{{module.id}}">
+          {{module.title}}
+        </a>
+      </li>
+    </ul>
+  </div>
+  <div class="col-9">
+    <app-lesson></app-lesson>
+  </div>
+</div>

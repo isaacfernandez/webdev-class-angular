@@ -1,0 +1,37 @@
+<a routerLink="/home">Home</a>
+
+<h2> Courses {{courses.length}} </h2>
+<div class="row">
+  <div class="col-6">
+    <ul class="list-group">
+      <li class="bg-primary list-group-item">Courses</li>
+      <li *ngFor="let course of courses">
+        <a routerLink="/admin/course/{{course.id}}/section">
+          {{course.title}}
+        </a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-3">
+    <ul class="list-group">
+      <li class="bg-primary list-group-item">Currently seeing {{sections.length}} sections</li>
+      <li class="list-group-item" *ngFor="let section of sections">
+        <span>{{section.name}} with {{section.seats}} seats.</span>
+      </li>
+    </ul>
+  </div>
+
+  <div class="col-3">
+    <li class="bg-primary list-group-item"> Add Section </li>
+    <input [(ngModel)]="sectionName"
+           placeholder="Section Name"
+           class="form-control">
+    <input [(ngModel)]="seats"
+           placeholder="Seats available"
+           class="form-control">
+    <button (click)="createSection(sectionName, seats)" class="btn btn-primary btn-block">
+      Add Section
+    </button>
+  </div>
+</div>

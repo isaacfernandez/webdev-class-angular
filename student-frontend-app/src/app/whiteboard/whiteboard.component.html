@@ -1,27 +1,52 @@
+<div [hidden]="loggedIn" class="row">
+  <div class="container-fluid">
+    <a routerLink="/login">Login</a>
+  </div>
+  <div class="container-fluid">
+    <a routerLink="/register">Register</a>
+  </div>
+</div>
+<div [hidden]="!loggedIn">
+  <a routerLink="/profile">Profile</a>
+</div>
+<div>
+<a [hidden]="!admin" routerLink="/admin/course"> | Admin page</a>
+</div>
+<div [hidden]="!loggedIn">
+  <a routerLink="/logout">Log Out</a>
+</div>
 <div class="container-fluid">
   <h1>
-    The Whitest of the White Boards
+    The White Boards
   </h1>
 
-  <div [hidden]="loggedIn" class="row">
-    <div class="container-fluid">
-      <a routerLink="/login">Login</a>
-    </div>
-    <div class="container-fluid">
-      <a routerLink="/register">Register</a>
-    </div>
-  </div>
   <div [hidden]="!loggedIn">
-    <a routerLink="/profile">Profile</a>
+    <h2>Currently enrolled sections: ({{sections.length}})</h2>
+    <ul class="list-group">
+      <li *ngFor="let enrollment of sections" class="list-group-item">
+        {{enrollment.section.name}}
+        ({{enrollment.section.seats}})
+      </li>
+    </ul>
   </div>
 
-  <h2>Currently enrolled sections: ({{sections.length}})</h2>
-  <ul class="list-group">
-    <li *ngFor="let enrollment of sections" class="list-group-item">
-      {{enrollment.section.name}}
-      ({{enrollment.section.seats}})
-    </li>
-  </ul>
+  <div>
+    <h2> Courses Offered</h2>
+    <div class="row">
+      <div *ngFor="let course of courses" class="col-sm-3">
+        <div class="card bg-light">
+          <div class="card-body">
+            <h5 class="card-title center">{{course.title}}</h5>
+            <p class="card-text">This course has {{course.modules.length}} modules</p>
+            <a routerLink="/course/{{course.id}}"
+               class="btn btn-primary pull-left">View</a>
+            <a routerLink="/course/{{course.id}}/section"
+               class="btn btn-primary pull-right">Enroll</a>
+          </div>
+        </div>
+      </div>
+    </div>
 
-  <!--<app-course-grid></app-course-grid>-->
+
+  </div>
 </div>
