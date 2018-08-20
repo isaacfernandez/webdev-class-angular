@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SectionsComponent implements OnInit {
 
+  sections = [];
+  courseId;
   constructor() { }
 
   ngOnInit() {

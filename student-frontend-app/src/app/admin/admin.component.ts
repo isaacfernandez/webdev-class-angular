@@ -21,6 +21,8 @@ export class AdminComponent implements OnInit {
   courses = [];
   courseId;
   sections = [];
+  sectionName: any;
+  seats: number;
 
 
   setParams(params) {
@@ -50,7 +52,7 @@ export class AdminComponent implements OnInit {
   createSection(sectionName, seats) {
     this
       .sectionService
-      .createSection(this.courseId, sectionName, seats)
+      .createSection(this.courseId, this.sectionName, this.seats)
       .then(() => {
         this.loadFields();
       });

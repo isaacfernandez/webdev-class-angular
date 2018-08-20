@@ -11,6 +11,7 @@ import {CourseServiceClient} from "../services/course.service.client";
 
 export class WhiteboardComponent implements OnInit {
 
+  admin = true;
   loggedIn;
   courses;
   sections = [];
